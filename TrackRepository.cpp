@@ -9,7 +9,7 @@ int TrackRepository::GetTotalDuration() const {
     for(auto a : disk){
         totalDuration += a->GetDuration();
     }
-    return totalDuration + 1000;
+    return totalDuration;
 }
 
 void TrackRepository::SaveToFile(const std::string& filename) const {
@@ -38,8 +38,8 @@ AbstractMusic* TrackRepository::GetTrackFromDisk(int index){
 }
 
 void TrackRepository::DeleteTrackFromDisk(int index){
-    //delete disk.at(index);
-    //disk.erase(disk.begin() + index);
+    delete disk.at(index);
+    disk.erase(disk.begin() + index);
 }
 
 void TrackRepository::InsertAt(int index, AbstractMusic* track) {
